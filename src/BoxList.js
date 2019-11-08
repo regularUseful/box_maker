@@ -1,12 +1,13 @@
 import React, {Component} from 'react';
-import Box from './Box'
-import BoxForm from './BoxForm'
+import Box from './Box';
+import BoxForm from './BoxForm';
+
 
 class BoxList extends Component{
     constructor(props){
         super(props)
         this.state = {
-            boxes: [{height: 100, width: 300, color: "lime"}]
+            boxes: []
         }
         this.create = this.create.bind(this)
     }
@@ -17,9 +18,15 @@ class BoxList extends Component{
         })
     }
 
+    remove(id){
+        this.setState({
+            boxes: this.state.boxes.filter((i)=> i.id !== id)
+        })
+    }
+
     render(){
         let boxes = this.state.boxes.map(i=> {
-            return <Box height={i.height} width={i.width} color={i.color} />
+            return <Box key={i.id} id={i.id}height={i.height} width={i.width} color={i.color} removeBox={()=>this.remove(i.id)}/>
         })
         return(
             <div>

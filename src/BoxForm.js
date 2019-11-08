@@ -1,5 +1,7 @@
 import React, {Component} from 'react';
 
+const uuidv4 = require('uuid')
+
 
 class BoxForm extends Component{
     constructor(props){
@@ -11,6 +13,7 @@ class BoxForm extends Component{
         }
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
+    
     }
 
     handleChange(evt){
@@ -22,13 +25,16 @@ class BoxForm extends Component{
 
     handleSubmit(evt){
         evt.preventDefault();
-        this.props.createBox(this.state);
+        let newBox = {...this.state, id: uuidv4()}
+        this.props.createBox(newBox);
         this.setState({
             height: "",
             width: "",
             color: ""
         })
     }
+
+
 
     render(){
       
@@ -43,7 +49,7 @@ class BoxForm extends Component{
                <label htmlFor="color">Color</label>
                <input type="text" onChange={this.handleChange} name="color" value={this.state.color} id="color">
                </input>
-               <button type="submit">Create Box</button>
+               <button>Create Box</button>
            </form>
         );
     }

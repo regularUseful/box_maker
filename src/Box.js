@@ -1,6 +1,9 @@
 import React, {Component} from 'react'
 
 class Box extends Component{
+
+ 
+
     render(){
         return(
             <div>
@@ -10,7 +13,7 @@ class Box extends Component{
                     backgroundColor: this.props.color
                 }}>
                 </div>
-                <button>X</button>
+                <button onClick={this.props.removeBox}>X</button>
             </div>
         );
     }
