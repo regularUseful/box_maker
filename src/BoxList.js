@@ -26,10 +26,11 @@ class BoxList extends Component{
 
     render(){
         let boxes = this.state.boxes.map(i=> {
-            return <Box key={i.id} id={i.id}height={i.height} width={i.width} color={i.color} removeBox={()=>this.remove(i.id)}/>
+            return <Box className="single-box" key={i.id} id={i.id}height={i.height} width={i.width} color={i.color} removeBox={()=>this.remove(i.id)}/>
         })
         return(
-            <div>
+            <div className="everything-container">
+                <h1>Useless Box Maker!</h1>
                 <BoxForm createBox={this.create} />
                 {boxes}
             </div>

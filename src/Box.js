@@ -6,7 +6,7 @@ class Box extends Component{
 
     render(){
         return(
-            <div>
+            <div className="single-box" >
                 <div style={{
                     height: `${this.props.height}px`,
                     width: `${this.props.width}px`,
